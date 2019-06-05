@@ -27,12 +27,18 @@ public partial class addCustomer : System.Web.UI.Page
                 Label2.Text = "No Customers :(";
                 result.DataSource = ds;
                 result.DataBind();
+                add.Visible = true;
+                edit.Visible = false;
+                delete.Visible = false;
             }
             else
             {
                 Label2.Text = "Customer Already Exists!";
                 result.DataSource = ds;
                 result.DataBind();
+                add.Visible = false;
+                edit.Visible = true;
+                delete.Visible = true;
             }
         }
     }

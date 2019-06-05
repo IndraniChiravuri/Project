@@ -12,7 +12,7 @@ public partial class addCustomer : System.Web.UI.Page
     {
 
     }
-    protected void addCustomerDetails(Customer customer)
+    private void addCustomerDetails(Customer customer)
     {
         //customer.CustomerID = int.Parse(custId.Text);
         customer.CustomerName = custName.Text;
@@ -30,6 +30,7 @@ public partial class addCustomer : System.Web.UI.Page
         customer.CreatedDate = DateTime.Now.ToShortDateString();
         customer.EditedDate = DateTime.Now.ToShortDateString();
         customer.UserID = email.Text;
+       // return customer;
     }
     protected void addCustomerBtn_Click(object sender, EventArgs e)
     {

@@ -27,7 +27,7 @@ public partial class updateCustomer : System.Web.UI.Page
             oldEmailId = ds.Tables[0].Rows[0]["email"].ToString();
         }
     }
-    protected Customer addCustomerDetails(Customer customer)
+    private void addCustomerDetails(Customer customer)
     {
         customer.CustomerID = int.Parse((Session["custId"]).ToString());
         customer.CustomerName = custName.Text;
@@ -41,11 +41,12 @@ public partial class updateCustomer : System.Web.UI.Page
         customer.City = city.SelectedValue;
         customer.Pincode = pinCode.Text;
         customer.PhoneNo = phoneNumber.Text;
+        Console.WriteLine(phoneNumber.Text);
         customer.Email = email.Text;
         customer.CreatedDate = DateTime.Now.ToShortDateString();
         customer.EditedDate = DateTime.Now.ToShortDateString();
         customer.UserID = email.Text;
-        return customer;
+        //return customer;
     }
     protected void state_SelectedIndexChanged(object sender, EventArgs e)
     {
@@ -205,7 +206,7 @@ public partial class updateCustomer : System.Web.UI.Page
     {
         ServiceReference1.Service1Client sc = new ServiceReference1.Service1Client();
         Customer customer = new Customer();
-        customer = addCustomerDetails(customer);
+        addCustomerDetails(customer);
         //fillData();
         if (customer.Email != oldEmailId) //oldEmailId is global variable
             sc.updateUserId(customer.Email, oldEmailId);
